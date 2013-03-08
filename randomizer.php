@@ -18,6 +18,9 @@ if(isset($_POST) && isset($_GET['add_name']))
     $content[] = $_POST['name'];
 
     file_put_contents($nameLocation, json_encode($content));
+
+    header('Location: randomizer.php');
+    exit;
 }
 
 if(isset($_POST) && isset($_GET['get_name']))
@@ -41,7 +44,9 @@ if(isset($_POST) && isset($_GET['get_name']))
 
 ?>
 
-<h1>Randomizer</h1>
+<h1>https://github.com/gwagner/random-swag-chooser</h1>
+
+<h2>Randomizer</h2>
 
 
 <form method="post" action="/randomizer.php?get_name=true">
@@ -81,7 +86,4 @@ if(file_exists($nameLocation))
 
     foreach($names as $index => $name)
         echo $open.$name.$close;
-
-
-
 }
